@@ -26,11 +26,17 @@ const addReducer = (state = defaultState, action) => {
         ...state, visibleAdd: action.payload, ...b
       };
     case ERROR_ADD_FORM:
-      if (typeof action.payload === "object") {
+      let i;
+      for (let key in action.payload) {
+        if(action.payload[key]===true){
+          i=true;
+        }
+      }
+      if (i) {
         return {...state, error: action.payload}
       } else {
         let arr = {...state};
-        let objError = {...arr.error, [action.payload]: false};
+        let objError = {...arr.error, [action.payload.error]: false};
         arr.error = objError;
         return arr
       }

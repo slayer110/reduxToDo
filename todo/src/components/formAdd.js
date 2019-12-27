@@ -6,11 +6,11 @@ import '../App.css';
 class Add extends Component {
   changeDateInput = (date) => {
     this.props.changeDate(date);
-    this.props.mistakeFunction('date')
+    this.props.mistakeFunction({error:'date'})
   };
   changeTaskInput = (e) => {
     this.props.changeTask(e.target.value);
-    this.props.mistakeFunction('text');
+    this.props.mistakeFunction({error:'text'});
   };
 
   addTask = (task, date, e) => {
@@ -44,8 +44,6 @@ class Add extends Component {
   };
 
   render() {
-    // let formatDate = this.state.startDate ? `${this.state.startDate.getDate()}.${this.props.formatMonth(this.state.startDate)}.${this.state.startDate.getFullYear()}` : '';
-    // this.checkErrorFunction();
     return <form className='styleAdd'
                  onSubmit={this.addTask.bind(null, this.props.task, this.props.date)}>
       <h2>Add panel</h2>
