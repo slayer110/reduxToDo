@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 class Case extends Component {
 
-  checkTask=(index)=>{
-    this.props.checkCase(index)
+  checkTask=()=>{
+    this.props.checkCase(this.props.id)
   };
 
   render() {
@@ -11,7 +11,7 @@ class Case extends Component {
       <tr>
         <td>{this.props.text}</td>
         <td>{this.props.date}</td>
-        <td><input type='checkbox' checked={this.props.done} onChange={this.checkTask.bind(null,this.props.id)}/>
+        <td><input type='checkbox' checked={this.props.done} onChange={this.checkTask}/>
         </td>
       </tr>
     );
