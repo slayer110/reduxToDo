@@ -3,6 +3,7 @@ export const CHECK_TASK = 'CHECK_TASK';
 
 
 export const addTask = (task, date) => {
+  let record;
   let formatMonth = (date) => {
     if ((date.getMonth() + 1).toString().length === 2 && (date.getMonth() + 1).toString()[0] !== 1) {
       return (date.getMonth() + 1)
@@ -11,9 +12,16 @@ export const addTask = (task, date) => {
     }
   };
   let formatDate = date ? `${date.getDate()}.${formatMonth(date)}.${date.getFullYear()}` : '';
+  if (task && date) {
+    record = {
+      text: task,
+      done: false,
+      date: formatDate,
+    };
+  }
   return {
     type: ADD_TASK_TO_CASES,
-    payload: {'task': task, 'date': formatDate}
+    payload: record
   }
 };
 
