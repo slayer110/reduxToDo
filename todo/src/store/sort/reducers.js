@@ -14,7 +14,7 @@ const sortReducer = (state = defaultState, action) => {
         type: action.payload.type, direction: action.payload.direction
       };
   }
-  return defaultState
+  return state
 };
 
 export default sortReducer;

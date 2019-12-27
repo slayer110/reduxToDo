@@ -26,6 +26,7 @@ export const addTask = (task, date) => {
 };
 
 export const checkCase = (index) => {
+  console.log(index)
   return {
     type: CHECK_TASK,
     payload: index

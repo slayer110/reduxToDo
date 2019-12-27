@@ -10,7 +10,7 @@ const store = createStore(rootReducer);
 export default class App extends Component {
 
   render() {
-    let visible;
+    localStorage.clear()
     return (
       <Provider store={store}>
         <Root/>
