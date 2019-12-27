@@ -26,11 +26,11 @@ class Sort extends Component {
     return <div className='styleSort'>
       <img
         src={this.visibleArrow(true)}
-        onClick={this.props.sortFunc.bind(null, this.props.typeSort, true)}
+        onClick={()=>this.props.sortFunc(this.props.typeSort, true)}
       />
       <img
         src={this.visibleArrow(false)}
-        onClick={this.props.sortFunc.bind(null, this.props.typeSort, false)}/>
+        onClick={()=>this.props.sortFunc(this.props.typeSort, false)}/>
     </div>
   }
 }
