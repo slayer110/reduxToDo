@@ -17,19 +17,6 @@ const casesReducer = (state = defaultState, action) => {
     }
     return arr[max].id
   };
-  const sorting = (prop, direction) => {
-    if (direction === 'Down') {
-      return (a, b) => {
-        if (a[prop] > b[prop]) return -1;
-        if (a[prop] < b[prop]) return 1;
-      }
-    } else {
-      return (a, b) => {
-        if (a[prop] > b[prop]) return 1;
-        if (a[prop] < b[prop]) return -1;
-      }
-    }
-  }
   switch (action.type) {
     case ADD_TASK_TO_CASES:
       if (action.payload.task && action.payload.date) {

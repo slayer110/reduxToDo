@@ -8,30 +8,29 @@ import down_arrow_active from "../images/down _arrow_active.png";
 class Sort extends Component {
   visibleArrow = (direction) => {
     if (this.props.typeSort === this.props.arrows.type && direction === this.props.arrows.direction) {
-      if (direction === 'Down') {
+      if (direction) {
+        return up_arrow_active
+      } else {
         return down_arrow_active
       }
-      if (direction === 'Up') {
-        return up_arrow_active
-      }
     } else {
-      if (direction === 'Down') {
+      if (direction) {
+        return up_arrow
+      } else {
         return down_arrow
       }
     }
-    if (direction === 'Up') {
-      return up_arrow
-    }
   };
+
   render() {
     return <div className='styleSort'>
       <img
-        src={this.visibleArrow('Up')}
-        onClick={this.props.sortFunc.bind(null, this.props.typeSort, 'Up')}
+        src={this.visibleArrow(true)}
+        onClick={this.props.sortFunc.bind(null, this.props.typeSort, true)}
       />
       <img
-        src={this.visibleArrow('Down')}
-        onClick={this.props.sortFunc.bind(null, this.props.typeSort, 'Down')}/>
+        src={this.visibleArrow(false)}
+        onClick={this.props.sortFunc.bind(null, this.props.typeSort, false)}/>
     </div>
   }
 }

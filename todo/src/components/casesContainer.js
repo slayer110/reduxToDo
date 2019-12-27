@@ -16,16 +16,15 @@ class CasesContainer extends React.Component {
   reverseDate = (par) => par.split('.').reverse().join('.');
 
   sorting(prop, direction) {
-    if (direction === 'Down') {
-      return (a, b) => {
-        if (a[prop] > b[prop]) return -1;
-        if (a[prop] < b[prop]) return 1;
-      }
-    }
-    if (direction === 'Up') {
+    if (direction) {
       return (a, b) => {
         if (a[prop] > b[prop]) return 1;
         if (a[prop] < b[prop]) return -1;
+      }
+    } else {
+      return (a, b) => {
+        if (a[prop] > b[prop]) return -1;
+        if (a[prop] < b[prop]) return 1;
       }
     }
   }
@@ -37,10 +36,10 @@ class CasesContainer extends React.Component {
     let arrModified = arr;
     const elemCase = (elem, index) => {
       let elemDate = elem.date;
-      if (sort.direction) {
+      if (sort.direction !== null) {
         elemDate = this.formatDate(elem.date);
       }
-      return <Case key={index}keyCase={index} id={elem.id} text={elem.text} date={elemDate} done={elem.done}
+      return <Case key={index} keyCase={index} id={elem.id} text={elem.text} date={elemDate} done={elem.done}
                    checkCase={this.props.checkCase}/>
     };
     if (text) {
@@ -56,7 +55,8 @@ class CasesContainer extends React.Component {
         return elem['date'] === this.formatDate(date)
       });
     }
-    if (sort.direction) {
+
+    if (sort.direction !== null) {
       arrModified = arrModified.map((elem) => {
         return {...elem, date: new Date(this.reverseDate(elem.date))}
       }).sort(this.sorting(sort.type, sort.direction));
