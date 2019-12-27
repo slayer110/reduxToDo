@@ -9,10 +9,6 @@ const defaultState = {
 };
 
 
-function deleteMistake() {
-
-}
-
 const addReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_TEXT_TASK:
